@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f5f5f2" />
+    <title>WHITE ROOM</title>
+  </head>
+  <body>
+    <main id="game">
+      <div id="hud" aria-live="polite">
+        <div class="hud-block">
+          <span class="hud-label">TIME</span>
+          <span id="elapsed">00:00</span>
+        </div>
+        <div class="hud-block hud-right">
+          <span class="hud-label">DISTANCE</span>
+          <span><span id="distance">0</span> m</span>
+        </div>
+      </div>
+
+      <section id="intro" class="intro">
+        <p class="eyebrow">AN EXPERIMENT IN MOTION</p>
+        <h1>WHITE<br /><em>ROOM</em></h1>
+        <p class="intro-copy">
+          There is nowhere to go.<br />
+          Keep running.
+        </p>
+        <button id="begin" type="button">ENTER THE ROOM</button>
+        <p class="controls">W A S D TO MOVE &nbsp; / &nbsp; MOUSE TO LOOK</p>
+      </section>
+
+      <section id="ending" class="ending" aria-live="assertive">
+        <p id="ending-kicker" class="eyebrow">THE ROOM HAS DECIDED</p>
+        <h2 id="ending-title">YOU ESCAPED</h2>
+        <p id="ending-copy"></p>
+        <button id="restart" type="button">RUN AGAIN</button>
+      </section>
+
+      <div id="crosshair" aria-hidden="true"></div>
+      <div id="vignette" aria-hidden="true"></div>
+      <div id="status" role="status"></div>
+    </main>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

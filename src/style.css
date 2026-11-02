@@ -1,0 +1,183 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@300;400;600&display=swap");
+
+:root {
+  color: #242424;
+  background: #f5f5f2;
+  font-family: "Manrope", sans-serif;
+  font-synthesis: none;
+}
+
+* { box-sizing: border-box; }
+
+html, body, #game {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+body { background: #f5f5f2; }
+
+canvas {
+  position: fixed;
+  inset: 0;
+  display: block;
+  outline: none;
+}
+
+#hud {
+  position: fixed;
+  z-index: 2;
+  inset: 30px 34px auto;
+  display: flex;
+  justify-content: space-between;
+  opacity: 0;
+  transition: opacity 1s ease;
+  pointer-events: none;
+}
+
+body.playing #hud { opacity: 0.72; }
+
+.hud-block {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font: 500 13px/1 "DM Mono", monospace;
+  letter-spacing: 0.08em;
+}
+
+.hud-right { text-align: right; }
+.hud-label { color: #70706d; font-size: 9px; letter-spacing: 0.18em; }
+
+.intro {
+  position: fixed;
+  z-index: 3;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(245, 245, 242, 0.88);
+  text-align: center;
+  transition: opacity 1.2s ease, visibility 1.2s ease;
+}
+
+body.playing .intro { opacity: 0; visibility: hidden; pointer-events: none; }
+
+.ending {
+  position: fixed;
+  z-index: 4;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(245, 245, 242, 0.94);
+  text-align: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 1s ease, visibility 1s ease;
+}
+
+body.finished .ending { opacity: 1; visibility: visible; }
+
+.ending h2 {
+  margin: 24px 0 18px;
+  color: #30302f;
+  font-size: clamp(42px, 8vw, 104px);
+  font-weight: 300;
+  letter-spacing: -0.07em;
+}
+
+.ending p:not(.eyebrow) {
+  max-width: 360px;
+  margin: 0 0 35px;
+  color: #555552;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.7;
+}
+
+.eyebrow, .controls {
+  color: #787875;
+  font: 500 10px/1 "DM Mono", monospace;
+  letter-spacing: 0.2em;
+}
+
+h1 {
+  margin: 27px 0 20px;
+  color: #30302f;
+  font-size: clamp(62px, 11vw, 146px);
+  font-weight: 300;
+  letter-spacing: -0.085em;
+  line-height: 0.75;
+}
+
+h1 em { color: #b6b6b0; font-style: normal; }
+
+.intro-copy {
+  margin: 0 0 41px;
+  color: #555552;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.7;
+}
+
+button {
+  border: 1px solid #444441;
+  padding: 14px 25px;
+  color: #30302f;
+  background: transparent;
+  cursor: pointer;
+  font: 500 10px/1 "DM Mono", monospace;
+  letter-spacing: 0.15em;
+  transition: color 180ms ease, background 180ms ease;
+}
+
+button:hover { color: #fff; background: #30302f; }
+.controls { margin-top: 37px; font-size: 9px; }
+
+#crosshair {
+  position: fixed;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  border: 1px solid rgba(40, 40, 38, 0.55);
+  border-radius: 50%;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  transition: opacity 1s ease;
+}
+
+body.playing #crosshair { opacity: 0.5; }
+
+#vignette {
+  position: fixed;
+  z-index: 1;
+  inset: 0;
+  pointer-events: none;
+  box-shadow: inset 0 0 14vw rgba(49, 49, 45, 0.1);
+}
+
+#status {
+  position: fixed;
+  z-index: 2;
+  bottom: 30px;
+  left: 50%;
+  color: rgba(45, 45, 42, 0.55);
+  font: 10px "DM Mono", monospace;
+  letter-spacing: 0.12em;
+  opacity: 0;
+  transform: translateX(-50%);
+  transition: opacity 400ms ease;
+}
+
+body.playing #status { opacity: 1; }
+
+@media (max-width: 600px) {
+  #hud { inset: 20px; }
+  .intro-copy { margin-bottom: 30px; }
+  .controls { margin-top: 28px; }
+}
